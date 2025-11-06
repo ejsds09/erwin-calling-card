@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Erwin — Calling Card</title>
+  <meta name="description" content="Your Name — short profile & contact" />
+  <style>
+    :root { --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#9aa6b2; font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; }
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,#07112a,#051025);color:#e6eef6;display:flex;align-items:center;justify-content:center;padding:20px}
+    .card{max-width:520px;width:100%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.03));border-radius:16px;padding:28px;box-shadow:0 8px 30px rgba(2,6,23,0.6);backdrop-filter: blur(6px)}
+    .row{display:flex;gap:16px;align-items:center}
+    .avatar{width:84px;height:84px;border-radius:14px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:#061026}
+    h1{font-size:20px;margin:0 0 6px}
+    p.lead{margin:0 0 12px;color:var(--muted)}
+    .buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    a.btn{display:inline-block;padding:10px 12px;border-radius:10px;text-decoration:none;background:rgba(255,255,255,0.03);color:inherit;border:1px solid rgba(255,255,255,0.03);font-weight:600}
+    a.primary{background:linear-gradient(90deg,var(--accent),#7c3aed);color:#041018;border:none}
+    .links{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .small{font-size:13px;color:var(--muted)}
+    footer{margin-top:14px;text-align:center;color:var(--muted);font-size:12px}
+    @media (max-width:420px){.row{flex-direction:row;gap:12px}.avatar{width:72px;height:72px}}
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <div class="row">
+      <img src="erwindfgdfgfd.png" alt="MyPic" class="avatar" height="100%">
+      <div style="flex:1">
+        <h1 id="name">Erwin Jay S. Delos Santos</h1>
+        <div class="small">Sr. DevOps Engineer • Quezon City, Philippines</div>
+        <p class="lead" id="bio">DevOps Engineer, building simple reliable infrastracture.</p>
+        <div class="buttons">
+          <a class="btn primary" id="cta-email" href="ejsds09@gmail.com">Email</a>
+          <a class="btn" id="cta-website" href="https://example.com" target="_blank" rel="noopener">Portfolio</a>
+        </div>
+        <div class="links" style="margin-top:10px">
+          <a class="btn" href="https://linkedin.com/in/erwin-jay-delos-santos-896473123" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/ejsds09" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="+63 9273870790" id="cta-phone">Call</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+      <div style="flex:1">
+        <div class="small">Scan QR</div>
+        <img alt="QR code" src="" id="qr" style="width:110px;height:110px;border-radius:8px;background:#071427;display:block" />
+      </div>
+      <div style="flex:2">
+        <p class="small">Tip: tap the NFC card with your phone, or scan the QR to open this page. You can save my contact to your phone.</p>
+      </div>
+    </div>
+
+    <footer>Made with ♥ — yourname.link</footer>
+  </div>
+
+  <script>
+    // Replace these with your info (no build step required)
+    const INFO = {
+      url: "https://your-gh-pages-url.github.io/", // <- update after you host
+      name: "Erwin jay S. Delos santos",
+      title: "DevOps Engineer",
+      bio: "DevOps Engineer, building simple reliable infrastracture.",
+      email: "ejsds09@gmail.com",
+      phone: "+63 9273870790",
+      linkedin: "https://linkedin.com/in/erwin-jay-delos-santos-896473123",
+      github: "https://github.com/ejsds09"
+    };
+
+    document.getElementById('name').textContent = INFO.name;
+    document.getElementById('cta-email').href = "mailto:" + INFO.email;
+    document.getElementById('cta-website').href = INFO.url;
+    document.getElementById('cta-phone').href = "tel:" + INFO.phone;
+    document.querySelectorAll('.links a')[0].href = INFO.linkedin;
+    document.querySelectorAll('.links a')[1].href = INFO.github;
+    document.getElementById('bio').textContent = INFO.bio;
+
+    // QR generation using a free public API (image will load)
+    const qr = document.getElementById('qr');
+    qr.src = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(INFO.url);
+  </script>
+</body>
+</html>
